@@ -6,6 +6,9 @@ export default class Color extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public nombre: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
@@ -17,5 +20,5 @@ export default class Color extends BaseModel {
     foreignKey: 'ColorID',
     localKey: 'id',
   })
-  public Vehiculos: HasMany<typeof Vehiculo>
+  public vehiculo: HasMany<typeof Vehiculo>
 }

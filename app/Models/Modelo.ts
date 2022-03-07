@@ -4,8 +4,17 @@ import Vehiculo from "App/Models/Vehiculo"
 import Marca from "App/Models/Marca"
 
 export default class Modelo extends BaseModel {
+  
+  public static table = "modelos"
+
   @column({ isPrimary: true })
   public id: number
+
+  @column()
+  public nombre: string
+
+  @column({ columnName: 'MarcaID' })
+  public marcaID: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

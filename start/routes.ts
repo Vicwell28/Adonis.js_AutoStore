@@ -21,8 +21,8 @@
 import Route from '@ioc:Adonis/Core/Route'
 import TiposController from 'App/Controllers/Http/TiposController'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
+Route.post('/', async (request) => {
+  return request
 })
 
 Route.resource("/User", "UsersController")

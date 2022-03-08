@@ -7,7 +7,7 @@ export default class Marca extends BaseModel {
   public id: number
 
   @column()
-  public nombre: string
+  public nombre_marca: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -16,7 +16,7 @@ export default class Marca extends BaseModel {
   public updatedAt: DateTime
 
   @hasMany(() => Modelo, {
-    foreignKey: 'MarcaID',
+    foreignKey: 'marcas_id',
     localKey: 'id',
   })
   public Modelos: HasMany<typeof Modelo>

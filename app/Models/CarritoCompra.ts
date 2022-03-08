@@ -5,6 +5,12 @@ export default class CarritoCompra extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public vehiculos_id: number
+
+  @column()
+  public users_id: number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

@@ -7,6 +7,26 @@ export default class User extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public nombres: string
+
+  @column()
+  public apellidos: string
+
+  @column()
+  public username: string
+
+  @column()
+  public email: string
+
+  @column()
+  public password: string
+
+  @column()
+  public token: string
+
+
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
@@ -14,13 +34,13 @@ export default class User extends BaseModel {
   public updatedAt: DateTime
 
   @hasMany(() => Orden, {
-    foreignKey: 'userID',
+    foreignKey: 'users_id',
     localKey: 'id',
   })
   public Orden: HasMany<typeof Orden>
 
   @hasMany(() => CarritoCompra, {
-    foreignKey: 'userID',
+    foreignKey: 'users_id',
     localKey: 'id',
   })
   public CarritoCompra: HasMany<typeof CarritoCompra>

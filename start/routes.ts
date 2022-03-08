@@ -28,10 +28,7 @@ Route.post('/', async (request) => {
 Route.resource("/User", "UsersController")
 Route.resource("/Marca", "MarcasController")
 Route.resource("/Modelo", "ModelosController")
-
 Route.resource("/Tipo", "TiposController")
-Route.get("/Tipo/Buscar/:Modelo", "TiposController.sfindBy")
-
 Route.resource("/Color", "ColorsController")
 Route.resource("/Transmicion", "TransmicionsController")
 Route.resource("/Combustible", "CombustiblesController")
@@ -40,3 +37,6 @@ Route.resource("/CarritoCompra", "CarritoComprasController")
 Route.resource("/Orden", "OrdensController")
 Route.resource("/DetalleOrden", "DetalleOrdensController")
 Route.resource("/ImagenVehiculo", "ImgVehiculosController")
+
+//Route.get("/Tipo/Buscar/:Modelo", "TiposController.sfindBy")
+

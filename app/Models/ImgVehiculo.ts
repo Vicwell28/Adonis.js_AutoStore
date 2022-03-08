@@ -6,6 +6,12 @@ export default class ImgVehiculo extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public vehiculos_id:number
+
+  @column()
+  public nombre:string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
@@ -13,7 +19,7 @@ export default class ImgVehiculo extends BaseModel {
   public updatedAt: DateTime
 
   @belongsTo(() => Vehiculo, {
-    foreignKey: 'vehiculosID',
+    foreignKey: 'vehiculos_id',
   })
   public Vehiculos: BelongsTo<typeof Vehiculo>
 }

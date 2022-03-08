@@ -7,7 +7,7 @@ export default class Combustible extends BaseModel {
   public id: number
 
   @column()
-  public nombre: string
+  public nombre_combustible: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -16,7 +16,7 @@ export default class Combustible extends BaseModel {
   public updatedAt: DateTime
 
   @hasMany(() => Vehiculo, {
-    foreignKey: 'combustiblesID',
+    foreignKey: 'combustibles_id',
     localKey: 'id',
   })
   public Vehiculos: HasMany<typeof Vehiculo>

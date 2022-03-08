@@ -11,7 +11,35 @@ import CarritoCompra from "App/MOdels/CarritoCompra"
 
 export default class Vehiculo extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public id: number				
+
+  @column()
+  public modelos_id:number
+
+  @column()
+  public tipos_id:number
+
+  @column()
+  public colors_id:number
+
+  @column()
+  public transmicions_id:number
+
+  @column()
+  public combustibles_id:number
+
+  @column()
+  public precio:number
+
+  @column()
+  public kilometraje:number
+
+  @column()
+  public Ano:number
+
+  @column()
+  public puertas:number
+
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -22,46 +50,46 @@ export default class Vehiculo extends BaseModel {
   //BELONGS TO
   
   @belongsTo(() => Color, {
-    foreignKey: 'colorID',
+    foreignKey: 'colors_id',
   })
   public Color: BelongsTo<typeof Color>
   
   @belongsTo(() => Tipo, {
-    foreignKey: 'tipoID',
+    foreignKey: 'tipos_id',
   })
   public Tipo: BelongsTo<typeof Tipo>
 
   @belongsTo(() => Combustible, {
-    foreignKey: 'combustibleID',
+    foreignKey: 'combustibles_id',
   })
-  public Combustiblec: BelongsTo<typeof Combustible>
+  public Combustible: BelongsTo<typeof Combustible>
 
   @belongsTo(() => Modelo, {
-    foreignKey: 'modeloID',
+    foreignKey: 'modelos_id',
   })
   public Modelo: BelongsTo<typeof Modelo>
 
   @belongsTo(() => Transmicion, {
-    foreignKey: 'transmicionID',
+    foreignKey: 'transmicions_id',
   })
   public Transmicion: BelongsTo<typeof Transmicion>
 
   //HAS MANY
 
   @hasMany(() => imgVehiculo, {
-    foreignKey: 'vehiculosID',
+    foreignKey: 'vehiculos_id',
     localKey: 'id',
   })
   public imgVehiculo: HasMany<typeof imgVehiculo>
 
   @hasMany(() => CarritoCompra, {
-    foreignKey: 'vehiculosID',
+    foreignKey: 'vehiculos_id',
     localKey: 'id',
   })
   public CarritoCompra: HasMany<typeof CarritoCompra>
 
   @hasMany(() => DetalleOrden, {
-    foreignKey: 'vehiculosID',
+    foreignKey: 'vehiculos_id',
     localKey: 'id',
   })
   public DetalleOrden: HasMany<typeof DetalleOrden>

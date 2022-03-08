@@ -3,11 +3,11 @@ import { BaseModel, column, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import Vehiculo from "App/Models/Vehiculo"
 
 export default class Tipo extends BaseModel {
-  @column({columnName: 'tiposID', isPrimary: true })
+  @column({isPrimary: true })
   public id: number
 
   @column()
-  public nombre: string
+  public nombre_tipo: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -16,7 +16,7 @@ export default class Tipo extends BaseModel {
   public updatedAt: DateTime
 
   @hasMany(() => Vehiculo, {
-    foreignKey: 'tipoID',
+    foreignKey: 'tipos_id',
     localKey: 'id',
   })
   public Vehiculos: HasMany<typeof Vehiculo>

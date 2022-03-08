@@ -7,6 +7,15 @@ export default class DetalleOrden extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public ordens_id: number
+
+  @column()
+  public vehiculos_id: number
+
+  @column()
+  public precio:number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
@@ -15,13 +24,13 @@ export default class DetalleOrden extends BaseModel {
 
   
   @belongsTo(() => Vehiculo, {
-    foreignKey: 'vehiculosID',
+    foreignKey: 'vehiculos_id',
   })
   public Vehiculos: BelongsTo<typeof Vehiculo>
 
   
   @belongsTo(() => Orden, {
-    foreignKey: 'ordensID',
+    foreignKey: 'ordens_id',
   })
   public Orden: BelongsTo<typeof Orden>
 }

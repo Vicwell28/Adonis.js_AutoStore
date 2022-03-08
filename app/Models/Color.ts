@@ -7,7 +7,7 @@ export default class Color extends BaseModel {
   public id: number
 
   @column()
-  public nombre: string
+  public nombre_color: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -17,7 +17,7 @@ export default class Color extends BaseModel {
 
 
   @hasMany(() => Vehiculo, {
-    foreignKey: 'ColorID',
+    foreignKey: 'colors_id',
     localKey: 'id',
   })
   public vehiculo: HasMany<typeof Vehiculo>

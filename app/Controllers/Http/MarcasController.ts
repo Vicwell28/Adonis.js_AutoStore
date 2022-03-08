@@ -2,41 +2,99 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Marca from "App/mOdels/Marca"
 
 export default class MarcasController {
-  public async index({}: HttpContextContract) {
-    const marca = await Marca.all()
-    return marca
+  public async index({ response }: HttpContextContract) {
+    try{
+      const marca = await Marca.all()
+
+      const marcaJSON = marca.map((marca) => marca.serialize())
+
+      response.status(200).json({
+        message: 'Successfully created a new model.',
+        data: marcaJSON
+      })
+    }
+    catch(error){
+      response.status(404).json({
+        message : "Failing created a new model."
+      })
+    }
+    
   }
 
-  public async create({}: HttpContextContract) {
+  public async create({}: HttpContextContract) {}
 
+  public async store({request, response}: HttpContextContract) {
+    try {
+      const marca = new Marca()
+
+      marca.nombre_marca = request.input("Nombre")
+      marca.save()
+      const marcaJSON = marca.serialize()
+      
+      response.status(200).json({
+        message: 'Successfully created a new model.',
+        data: marcaJSON
+      })
+
+    } catch (error) {
+      response.status(400).json({
+        message : "Failing created a new model."
+      })
+    }
   }
 
-  public async store({}: HttpContextContract) {
-    const marca = new Marca()
+  public async show({params, response}: HttpContextContract) {
+    try{
+      const marca = await Marca.findOrFail(params.id)
+      const marcaJSON = marca.serialize()
 
-    marca.nombre = "Ford"
-
-    await marca.save()
-    return marca
-
+      response.status(200).json({
+        massage : "Satifactorio. Usuario encontrado",
+        data : marcaJSON
+      })
+    }
+    catch(error){
+      response.status(400).json({
+        massage : "Error. Usuario no enocntrado.",
+      })
+    }
   }
 
-  public async show({}: HttpContextContract) {
-    const marca = await Marca.find(1)
-    return marca
+  public async edit({}: HttpContextContract) {}
+
+  public async update({request,params, response}: HttpContextContract) {
+    try{
+      const marca = await Marca.findOrFail(params.id)
+      marca.nombre_marca = request.input("Nombre");
+      marca.save()
+      const marcaJSON = marca.serialize()
+      
+      response.status(200).json({
+        massage : "Satifactorio. Usuario encontrado y actualizado.",
+        data : marcaJSON
+      })
+    }
+    catch(error){
+      response.status(400).json({
+        massage : "Error. Usuario no enocntrado.",
+      })
+    }
   }
 
-  public async edit({}: HttpContextContract) {
-
-  }
-
-  public async update({}: HttpContextContract) {
-    const marca = await Marca.findOrFail(1)
-    await marca.delete()
-    return marca
-  }
-
-  public async destroy({}: HttpContextContract) {
-
+  public async destroy({params, response}: HttpContextContract) {
+    try{
+      const marca = await Marca.findOrFail(params.id)
+      await marca.delete()
+      
+      response.status(200).json({
+        massage : "Satifactorio. Marca encontrado y eliminado.",
+        data: marca
+      })
+    }
+    catch{
+      response.status(200).json({
+        massage : "Error. Marca no encontrado.",
+      })
+    }
   }
 }

@@ -7,6 +7,12 @@ export default class Orden extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public users_id:number
+
+  @column.date()
+  public fecha: DateTime
+
   @column.date({
     serialize: (value) => value.toFormat('dd LLL yyyy')
   })
@@ -19,12 +25,12 @@ export default class Orden extends BaseModel {
   public updatedAt: DateTime
 
   @belongsTo(() => User, {
-    foreignKey: 'userID',
+    foreignKey: 'users_id',
   })
   public User: BelongsTo<typeof User>
 
   @hasMany(() => DetalleOrden, {
-    foreignKey: 'ordensID',
+    foreignKey: 'ordens_id',
   })
   public DetalleOrden: HasMany<typeof DetalleOrden>
 

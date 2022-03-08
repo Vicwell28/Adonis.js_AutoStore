@@ -13,8 +13,8 @@ export default class Modelo extends BaseModel {
   @column()
   public nombre_modelo: string
 
-  @column({ columnName: 'marcas_id' })
-  public marca_id: number
+  @column()
+  public marcas_id: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -26,7 +26,7 @@ export default class Modelo extends BaseModel {
   @belongsTo(() => Marca, {
     foreignKey: 'marcas_id'
   })
-  public marca: BelongsTo<typeof Marca>
+  public Marca: BelongsTo<typeof Marca>
 
   @hasMany(() => Vehiculo, {
     foreignKey: 'modelos_id',

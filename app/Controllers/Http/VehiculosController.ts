@@ -7,7 +7,7 @@ export default class VehiculosController {
       const vehiculo = await Vehiculo.
       query()
       .preload('Modelo', (modeloQuery) => {
-        modeloQuery.preload('marca')
+        modeloQuery.preload('Marca')
         })
       .preload('Transmicion')
       .preload('Combustible')
@@ -42,7 +42,7 @@ export default class VehiculosController {
       vehiculo.combustibles_id = request.input("Combustible")
       vehiculo.precio = request.input("Precio")
       vehiculo.kilometraje = request.input("Kilometraje")
-      vehiculo.Ano = request.input("Ano")
+      //vehiculo.Ano = request.input("Ano")
       vehiculo.puertas = request.input("Puertas")
       vehiculo.save()
       const vehiculoJSON = vehiculo.serialize()
@@ -88,9 +88,10 @@ export default class VehiculosController {
       vehiculo.combustibles_id = request.input("Combustible")
       vehiculo.precio = request.input("Precio")
       vehiculo.kilometraje = request.input("Kilometraje")
-      vehiculo.Ano = request.input("Ano")
+      //vehiculo.Ano = request.input("Ano")
       vehiculo.puertas = request.input("Puertas")
       vehiculo.save()
+      
       const vehiculoJSON = vehiculo.serialize()
       
       response.status(200).json({

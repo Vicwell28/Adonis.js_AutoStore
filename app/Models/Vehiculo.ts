@@ -34,8 +34,8 @@ export default class Vehiculo extends BaseModel {
   @column()
   public kilometraje:number
 
-  @column()
-  public Ano:number
+  @column.dateTime({ autoCreate: true })
+  public Ano:DateTime
 
   @column()
   public puertas:number

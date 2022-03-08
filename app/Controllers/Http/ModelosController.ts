@@ -6,7 +6,7 @@ export default class ModelosController {
     try{
       const modelo = await Modelo
       .query()
-      .preload('marca')
+      .preload('Marca')
 
       const modeloJSON = modelo.map((modelo) => modelo.serialize())
 
@@ -30,7 +30,7 @@ export default class ModelosController {
       const modelo = new Modelo()
 
       modelo.nombre_modelo = request.input("Nombre")
-      modelo.marca_id = request.input("Marca")
+      modelo.marcas_id = request.input("Marca")
       modelo.save()
       const modeloJSON = modelo.serialize()
       
@@ -69,7 +69,7 @@ export default class ModelosController {
     try{
       const modelo = await Modelo.findOrFail(params.id)
       modelo.nombre_modelo = request.input("Nombre");
-      modelo.marca_id = request.input("Marca"); 
+      modelo.marcas_id = request.input("Marca"); 
       modelo.save()
       const modeloJSON = modelo.serialize()
       

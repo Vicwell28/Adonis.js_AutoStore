@@ -25,9 +25,7 @@ export default class ModelosController {
     
   }
 
-  public async create({}: HttpContextContract) {
-
-  }
+  public async create({}: HttpContextContract) {}
 
   public async store({request, response}: HttpContextContract) {
     try {
@@ -54,9 +52,7 @@ export default class ModelosController {
     return modelo
   }
 
-  public async edit({}: HttpContextContract) {
-
-  }
+  public async edit({}: HttpContextContract) {}
 
   public async update({}: HttpContextContract) {
     const modelo = await Modelo.findOrFail(1)

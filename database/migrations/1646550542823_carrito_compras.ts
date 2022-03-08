@@ -6,8 +6,8 @@ export default class CarritoCompras extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.integer('vehiculosID').unsigned().references('id').inTable('vehiculos')
-      table.integer('userID').unsigned().references('id').inTable('users')
+      table.integer('vehiculos_id').unsigned().references('id').inTable('vehiculos')
+      table.integer('users_id').unsigned().references('id').inTable('users')
       table.datetime('created_at', { useTz: true })
       table.datetime('updated_at', { useTz: true })
     })

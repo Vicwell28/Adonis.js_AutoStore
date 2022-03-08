@@ -6,8 +6,8 @@ export default class Modelos extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.string('nombre', 50).notNullable()
-      table.integer('marcaID').unsigned().references('id').inTable('marcas')
+      table.string('nombre_modelo', 50).notNullable()
+      table.integer('marcas_id').unsigned().references('id').inTable('marcas')
       table.datetime('created_at', { useTz: true })
       table.datetime('updated_at', { useTz: true })
     })

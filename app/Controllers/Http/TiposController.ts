@@ -27,8 +27,14 @@ export default class TiposController {
 
   //Return a single post
   public async show({}: HttpContextContract) {
-    const TipoAuto = await Tipo.find(2)
-    return TipoAuto
+    
+    try{
+      const TipoAuto = await Tipo.find(2)
+      return TipoAuto
+    }
+    catch(error){
+      return error
+    }
   }
 
   ///posts/:id/edit
